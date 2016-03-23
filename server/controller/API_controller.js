@@ -1,6 +1,6 @@
 console.log("loading API_controller");
 var mongoose = require('mongoose');
-var Name = mongoose.model('Name');
+var Name = mongoose.model('names');
 var catch_errors = function(err){
     res.json({error:err});
 };
@@ -12,7 +12,7 @@ module.exports = (function() {
                 if(err) {
                     console.log(err);
                 } else {
-                    res.json({names: names});
+                    res.json(names);
                 }
             });
         },

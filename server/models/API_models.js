@@ -9,6 +9,6 @@ var NameSchema = new mongoose.Schema({
 
 //NameSchema.path('name').required(true, 'Name cannot be blank');
 
-mongoose.model('Name', NameSchema);
+mongoose.model('names', NameSchema);
 
 console.log("exit API_models");
