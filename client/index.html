@@ -20,8 +20,9 @@
                 console.log("factory.index");
                 // Where do we get access to $http?
                 $http.get('/names')
-                .success(function(output) {
-                    names = output;
+                .then(function(output) {
+                    names = output.data;
+                    console.log("output =", output.data);
                     callback(names);
                 })
                 .catch (function(err) {
@@ -33,9 +34,9 @@
                 console.log("factory.new data:", data);
                 console.log('the name', data.name);
                 $http.get('/names/new/' + data.name)
-                .success(function(output) {
-                    console.log("get /new response: ", output);
-                    callback(output);
+                .then(function(output) {
+                    console.log("get /new response: ", output.data);
+                    callback(output.data);
                 })
                 .catch (function(err){
                     console.log("err =", err );
@@ -45,9 +46,9 @@
             factory.remove = function(data, callback) {
                 console.log("factory.remove data:", data);
                 $http.get('/names/remove/' + data)
-                .success(function() {
+                .then(function() {
                     console.log("remove response");
-                    callback(names);
+                    callback();
                 })
                 .catch (function(err){
                     console.log("err =", err );
